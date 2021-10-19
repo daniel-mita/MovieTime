@@ -1,0 +1,12 @@
+{
+  "name": "MovieTime",
+  "displayName": "MovieTime",
+  "expo": {
+    "name": "MovieTime",
+    "slug": "MovieTime",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
