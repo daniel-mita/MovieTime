@@ -7,6 +7,7 @@ export function useConnectionInfo() {
     async function checkConnection(){
         if (!netInfo.isConnected) {
             //do something
+            console.log("No internet connection");
         }
         return netInfo.isConnected
     }

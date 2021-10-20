@@ -39,9 +39,17 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "white"
     },
+    flex_row: {
+        flexDirection: "row",
+    },
 });
 
-export const screenOptions = {
+export const HomescreenOptions = {
     headerShown: false,
     cardStyle: { backgroundColor: colors.fancyBlue },
+};
+
+export const screenOptions = {
+    cardStyle: { backgroundColor: colors.fancyBlue },
+    headerTintColor: 'white',
 };

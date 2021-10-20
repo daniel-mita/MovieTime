@@ -5,15 +5,16 @@ import { HomeScreen } from "./pages/home-screen";
 import { SingleMovie } from "./pages/movie";
 import { SearchMovie } from "./pages/movie-search";
 import { TopMovies } from "./pages/movies-top";
-import { screenOptions } from "./styles";
+import { colors, HomescreenOptions, px, screenOptions } from "./styles";
 export type RootStackParamList = {
     Home: undefined;
-    SearchMovie: undefined,
-    SingleMovie: undefined,
-    TopMovies: undefined
+    SearchMovie: undefined;
+    SingleMovie: { id: string };
+    TopMovies: undefined;
 };
 
 export type ScreenNavigationProps = StackNavigationProp<RootStackParamList>;
+export type SingleMovieScreenRouteProps = RouteProp<RootStackParamList, "SingleMovie">;
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -21,11 +22,13 @@ export function AppNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
+                <Stack.Group screenOptions={HomescreenOptions as {}}>
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                </Stack.Group>
                 <Stack.Group screenOptions={screenOptions as {}}>
-                    <Stack.Screen name="Home"  component={HomeScreen} />
-                    <Stack.Screen name="SearchMovie" component={SearchMovie} />
-                    <Stack.Screen name="SingleMovie" component={SingleMovie} />
-                    <Stack.Screen name="TopMovies" component={TopMovies} />
+                    <Stack.Screen options={{title: "Search your favorite title",headerStyle: {backgroundColor: colors.fancyBlue,height: px(70)}}} name="SearchMovie" component={SearchMovie} />
+                    <Stack.Screen options={{title: "",headerStyle: {backgroundColor: colors.fancyBlue,height: px(60)}}} name="SingleMovie" component={SingleMovie} />
+                    <Stack.Screen options={{title: "",headerStyle: {backgroundColor: colors.fancyBlue,height: px(60)}}} name="TopMovies" component={TopMovies} />
                 </Stack.Group>
             </Stack.Navigator>
         </NavigationContainer>
