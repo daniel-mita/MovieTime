@@ -5,7 +5,7 @@ type fnSignature = (() => any) | (() => Promise<any>)
 function isPromise(obj: any): obj is Promise<any> {
     return typeof obj === "object" && "then" in obj;
 }
-
+//custom hook for asyncronous calls adapted to typescript. includes the cleanup function
 export const useEffectAsync = (fn: fnSignature, deps: any[] = []) => {
     const [error, setError] = useState<any>(null);
     useEffect(() => {
@@ -34,4 +34,8 @@ export const useEffectAsync = (fn: fnSignature, deps: any[] = []) => {
     return {
         error
     }
+}
+
+export async function delay(ms: number) {
+    return new Promise<void>((r) => setTimeout(r, ms));
 }

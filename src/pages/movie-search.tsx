@@ -5,6 +5,7 @@ import { useEffectAsync } from "../hooks/async-hooks";
 import { ScreenNavigationProps } from "../routing";
 import { getMoviesBySearch, getPopularMovies, getTopMovies } from "../services/movies";
 import { px, styles, width } from "../styles";
+import { MovieItem } from "./movies-top";
 
 export const SearchMovie = () => {
     const navigation = useNavigation<ScreenNavigationProps>();
@@ -16,7 +17,7 @@ export const SearchMovie = () => {
                 const response = await getMoviesBySearch(searchInput);
                 setMovies(response.results);
             } else {
-                const response = await getPopularMovies();;
+                const response = await getPopularMovies(); //search movies with every letter typed
                 setMovies(response.results);
             }
         } catch (e: any) {
@@ -46,11 +47,9 @@ export const SearchMovie = () => {
                     />
                 </View>
                 <ScrollView horizontal={false} showsVerticalScrollIndicator={true}>
-                {movies.map((movie) => {
-                    return <TouchableOpacity onPress={() => navigation.navigate("SingleMovie", {id: movie.id})} key={movie.id} style={{ margin: px(20), borderColor: "gray" }}>
-                        <Text style={{color: 'white'}}>{movie.title}</Text>
-                    </TouchableOpacity>;
-                })}
+                    {movies.map((movie) => {
+                        return <MovieItem key={movie.id} movie={movie} />;
+                    })}
                 </ScrollView>
             </View>
         </SafeAreaView>

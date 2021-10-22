@@ -1,7 +1,7 @@
 import { StyleProp, TextStyle, Touchable, TouchableOpacity, ViewStyle,Text,StyleSheet } from "react-native";
 import React from 'react'
 import { toStyleArray, px, colors } from "../styles";
-//custom button to be easily styled from here and used across the app.
+
 export const textStyles = StyleSheet.create({
     primary:{
         fontSize: px(15),
@@ -22,7 +22,7 @@ export const backgroundStyles = StyleSheet.create({
     disabled: { alignContent: "center", borderRadius:px(5), backgroundColor: colors.coolGray },
 });
 
-
+//custom button to be easily styled from here and used across the app.
 export const StyledButton = React.memo(function StyledButton({style,variant = "primary", onPress, disabled , ...p} :{
     style?: StyleProp<ViewStyle>,
     variant?: keyof typeof backgroundStyles

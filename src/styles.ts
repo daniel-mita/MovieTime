@@ -3,13 +3,14 @@ import { Dimensions, PixelRatio, StyleProp, StyleSheet } from "react-native";
 export const { width, height } = Dimensions.get("window");
 export const dpi = PixelRatio.get();
 
-export function toStyleArray<T>(style: StyleProp<T>) {
-    return style && "map" in style ? style : [style];
-}
-
 export function px(value: number) {
     return (value * width) / 400;
 }
+//scalability for different device screen ratio
+
+export function toStyleArray<T>(style: StyleProp<T>) {
+    return style && "map" in style ? style : [style];
+} //accept local style + styles given when used
 
 export function size(width: number, height?: number) {
     return {
@@ -21,7 +22,7 @@ export function size(width: number, height?: number) {
 export const colors = {
     fancyBlue: "#3C5082",
     coolGray: "#605f5f",
-    coolRed: "#FF4155"
+    coolRed: "#FF4155",
 };
 
 export const styles = StyleSheet.create({
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
     headerText: {
         fontSize: px(30),
         fontWeight: "bold",
-        color: "white"
+        color: "white",
     },
     flex_row: {
         flexDirection: "row",
@@ -51,5 +52,5 @@ export const HomescreenOptions = {
 
 export const screenOptions = {
     cardStyle: { backgroundColor: colors.fancyBlue },
-    headerTintColor: 'white',
+    headerTintColor: "white",
 };
